@@ -1,0 +1,85 @@
+Este projeto trata-se de um template do Reframework customizado versão 1.0
+
+Pastas:
+
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\NomedoProcesso_ReFramework_Dispatcher\
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\NomedoProcesso_ReFramework_Performer\
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\PastadeNegociodoProcesso\
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\PastadeNegociodoProcesso\Log\
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\PastadeNegociodoProcesso\Log\Screenshot\
+
+Arquivos importantes:
+
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\config.json
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\NomedoProcesso_ReFramework_Dispatcher\configAssetFolder.json
+D:\UiPath_Templates\BR_SP_R000_NomedoProcesso\NomedoProcesso_ReFramework_Performer\configAssetFolder.json
+
+
+Aconselho seguir os seguintes passos de configuração inicial:
+
+00.Copiar pasta do projeto (BR_SP_R000_NomedoProcesso) para diretório D://
+
+01.Renomear as pastas conforme projeto em desenvolvimento:
+
+- Projeto	BR_SP_R000_NomedoProcesso
+- Dispatcher	NomedoProcesso_ReFramework_Dispatcher
+- Performer	NomedoProcesso_ReFramework_Performer
+- Negócios	PastadeNegociodoProcesso
+
+02.Configurar 'Config.json' e 'configAssetFolder.json' conforme requisitos do projeto:
+
+- Config.json: Trata-se do arquivo principal de configuração do projeto, responsavel pelos parametros de configuração separados pelos seguintes grupos: 
+
+
+	Default: Configuração base do projeto indicando: nome do processo, nome das filas de trabalho, configurações de log, tratamento de exceções e remoção de itens pendentes da fila do performer.
+	
+	SAP: Sugestão de configuração de uso da aplicação SAP indicando: nome da credencial, caminho do executavel, nome do client, linguagem e servidor de execução do processo.
+
+	SITE: Sugestão de configuração de uso da aplicação SITE indicando: nome da credencial e url de execução do processo.
+
+	EXCEL: Sugestão de configuração de uso de arquivos EXCEL indicando: grupos de arquivos, nome do arquivo, caminho e aba de execução do processo.
+
+	PURGE: Configuração base da regra de expurgo de arquivos indicando: grupos de arquivos, periodo de exclusão e diretorio de exclusão.
+	
+	EMAIL: Sugestão de configuração de uso da aplicação E-MAIL(smtp) indicando: porta, servidor, remetente e destinatarios padrões e grupos de envios de e-mail subdivididos em dois grupos:
+
+
+'Dispatcher'
+
+	Notify - Por tratar-se do 'Dispatcher' o qual possui apenas um item na sua fila de trabalho, as exceções de Business/System irão gerar um e-mail de alerta constando os detalhes do erro apresentado e captura de tela para processos que possuem interação com telas nesta etapa.
+
+	Report - Esse e-mail sinaliza a quantidade de itens adicionados as fila de trabalho do performer e sinaliza o disparo da execução do 'Perfomer' caso existam itens disponiveis para execução.
+
+'Perfomer'
+
+	Notify - Esse e-mail sinaliza algum cenario que interrompeu a execução do processo abruptamente, constando os detalhes do erro apresentado.
+
+	Report - Esse relatorio sinaliza a quantidade de itens executados na fila de trabalho do performer e contabilizando os indicadores de exceção de sistema e/ou negocios, pendentes e concluidos com sucesso.
+
+
+
+- configAssetFolder.json: Trata-se do arquivo secundario de configuração do projeto, responsavel por indicar: 
+
+AssetConfigName: BR_SP_R000_NOMEDOPROCESSO_Config -> Nome do 'Asset' de configuração principal do projeto
+
+AssetConfigFolder: "DH I&N - Brasil" -> Nome da 'Folder' onde o 'Asset' de configuração principal do projeto esta localizado
+
+
+
+03. Criar as configurações no Orquestrador: 'Assets'(Credencial/Config) e 'Queues'(Dispatcher/Performer) conforme requisitos do processo.
+
+
+04.Iniciar o Desevolvimento
+
+
+05.Boa sorte
+
+
+Obs.: Criei um workflow 'TestCase.xaml' em ambos processos dentro do workflow 'Process.xaml' no qual é possivel executar o processo antes das configurações do projeto que será desenvolvido, testando os caminhos de sucesso, exceção de negocios ou sistema conforme configuração da variavel 'TestCase'. Nota: Será necessario criar o 'Asset' e 'Queues' conforme nomeclaturas disponiveis no 'Config.json' padrão.
+
+
+
+
+
+

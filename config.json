@@ -1,0 +1,96 @@
+﻿{
+	"Default":{
+		"DispatcherQueueName":"BR_SP_R000_NomedoProcesso_Dispatcher",
+		"PerformerQueueName":"BR_SP_R000_NomedoProcesso_Performer",
+		"ProcessName":"NomedoProcesso",
+		"MaxRetryNumber":"2",
+		"RetryInterval":"60",
+		"DelayAfter":"300",
+		"DelayBefore":"300",
+		"DeletePendingItems":"False",
+		"PathScreenshot":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\Log\\Screenshot\\",
+		"PathProcessLog":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\Log\\",
+		"LogName":"DateTime_NomedoProcesso.csv",
+		"LogMessage_GetTransactionData":"Processing Transaction Number",
+		"LogMessage_GetTransactionDataError":"Error getting transaction data for Transaction Number:",
+		"LogMessage_Success":"Transaction Successful.",
+		"LogMessage_BusinessRuleException":"Business rule exception.",
+		"LogMessage_ApplicationException":"System exception."
+	},
+	"SAP":{
+		"Credential":"BR_SP_R000_NomedoProcesso_Credencial_SAP",
+		"SAPLogonPath":"D:\\Program Files (x86)\\SAP\\Frontend\\SAPgui\\saplogon.exe",
+		"Client":"100",
+		"Language":"PT",
+		"Server":"NomedoServidorSAP"
+	},
+	"SITE":{
+		"Credential":"BR_SP_R000_NomedoProcesso_Credencial_Site",
+		"URL":"https://www.teste.com.br/"
+	},
+	"Excel":{
+		"ArquivoPrincipal":{
+			"FileName":"NomedoArquivo.xlsx",
+			"Path":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\ArquivoPrincipal\\",
+			"Tab":"Principal"
+		},
+		"ArquivoAuxiliar":{
+			"FileName":"NomedoArquivo.xlsx",
+			"Path":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\ArquivoAuxiliar\\",
+			"Tab":"Principal"
+		},
+		"Modelo":{
+			"FileName":"NomedoArquivo.xlsx",
+			"Path":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\Modelo\\",
+			"Tab":"Principal"
+		}
+	},
+	"Purge":{
+		"Rule":[
+			{
+				"Period":"30",
+				"Directory":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\Log\\"
+			},
+			{
+				"Period":"30",
+				"Directory":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\Log\\Screenshot\\"
+			},
+			{
+				"Period":"30",
+				"Directory":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\ArquivoPrincipal\\"
+			},
+			{
+				"Period":"30",
+				"Directory":"D:\\BR_SP_R000_NomedoProcesso\\PastadeNegociodoProcesso\\ArquivoAuxiliar\\"
+			}
+		]
+	},
+	"Email":{
+		"Config":{
+			"Port":"25",
+			"Server":"mail.eletropaulo.com.br",
+			"From":"nomedoemail@enel.com",
+			"To":"tpsilva@minsait.com"
+		},
+		"Dispatcher":{
+			"Notify":{
+				"Subject":"NomedoProcesso | Notificação - Dispatcher",
+				"Body":"Prezados,<br><br>A execu&ccedil;&atilde;o do processo NomedoProcesso_Dispatcher encontrou uma falha.<br><br> Detalhes Técnicos: fail.<br><br>Em caso de duvidas procure o departamento responsável pelo COE RPA ENEL.<br><br>Atenciosamente,<br>RPA Enel."
+			},
+			"Report":{
+				"Subject":"NomedoProcesso | Relatório - Dispatcher",
+				"Body":"Prezados,<br><br>A execu&ccedil;&atilde;o do processo NomedoProcesso_Dispatcher foi conclu&iacute;da com sucesso. Foi adicionado a fila de tratativa {} itens pendentes, a execu&ccedil;&atilde;o do NomedoProcesso_Perfomer iniciar&aacute; a sequencia caso existam itens pendentes.<br><br>Em caso de duvidas procure o departamento responsável pelo COE RPA ENEL.<br><br>Atenciosamente,<br>RPA Enel."
+			}
+		},
+		"Performer":{
+			"Notify":{
+				"Subject":"NomedoProcesso | Notificação - Performer",
+				"Body":"Prezados,<br><br>A execu&ccedil;&atilde;o do processo NomedoProcesso_Performer encontrou uma falha.<br><br> Detalhes Técnicos: fail.<br><br>Em caso de duvidas procure o departamento responsável pelo COE RPA ENEL.<br><br>Atenciosamente,<br>RPA Enel."
+			},
+			"Report":{
+				"Subject":"NomedoProcesso | Relatório - Performer",
+				"Body":"Prezados,<br><br>A execu&ccedil;&atilde;o do processo NomedoProcesso_Performer foi conclu&iacute;da com sucesso.<br>Segue em anexo o relatório de execução.<br><br>Indicadores de execução<br>Total de itens processados: in_TotalCount<br>Itens Concluidos com Sucesso: int_SuccessCount<br>Itens em Exce&ccedil;&atilde;o de neg&oacute;cio: int_BusinessCount <br>Itens em Exce&ccedil;&atilde;o de sistema: int_SystemCount<br>Itens pendentes: int_PendingCount<br><br>Em caso de duvidas procure o departamento responsável pelo COE RPA ENEL.<br><br>Atenciosamente,<br>RPA Enel."
+			}
+		}
+	}
+}
